@@ -26,7 +26,7 @@ fun main() {
         1 -> println("Why 1? Out of many number, you chose 1")
         in 2..10 -> println("really? Out of many numbers, you chose this small value")
         in 11..18 -> println("really? teenage?")
-        else -> println("I'm tired, just mind your own")
+        else -> println("Thanks for trying my program!")
     }
 
     print("")
@@ -34,11 +34,19 @@ fun main() {
     for (i in 1..10){
         print("${i} ")
     }
+    println();
 
     var c = 0;
 
     while (c <= 5) {
-        print("${c} ")
+        print("This is a while loop ${c} ")
         c++;
     }
+    println();
+
+    do {
+        println("This is a do-while Loop");
+        c--;
+    } while (c >= 5);
+    println();
 }
