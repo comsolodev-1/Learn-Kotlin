@@ -44,6 +44,25 @@ class Calculator{
     fun displayMsg(menu: Menu){
         var calcChoice = 0
         
+        println("""
+ _________________________
+|  _____________________  |
+| |         Hello World | |
+| |_____________________| |
+|_________________________|
+|                         |
+| [AC ] [ C ] [ % ] [ / ] |
+|                         |
+| [ 7 ] [ 8 ] [ 9 ] [ * ] |
+|                         |
+| [ 4 ] [ 5 ] [ 6 ] [ - ] |
+|                         |
+| [ 1 ] [ 2 ] [ 3 ] [ + ] |
+|                         |
+| [ 0 ] [00 ] [ . ] [ = ] |
+|_________________________|
+        """)
+
         while(calcChoice !in 6..7) {
             println("${menu.lines} \nYou chose ${menu.strCalc} \n${menu.lines} \nChoose Operation Below: \n${menu.lines}");
             println("1. ${opAdd} \n2. ${opSub} \n3. ${opMul} \n4. ${opDiv} \n5. ${opMod} \n6. ${mainMenu} \n7. ${menu.strQuit} \n${menu.lines}")
@@ -52,27 +71,111 @@ class Calculator{
             calcChoice = readLine()?.toIntOrNull()?: 0
 
             when (calcChoice) {
-                1 -> println();
-                2 -> println();
-                3 -> println();
-                4 -> println();
-                5 -> println();
+                1 -> addNum(opAdd, menu)
+                2 -> subNum(opSub, menu)
+                3 -> mulNum(opMul, menu)
+                4 -> divNum(opDiv, menu)
+                5 -> modNum(opMod, menu)
                 6 -> return
                 7 -> {println("Your choice is ${menu.strQuit}"); exitProcess(0)}
                 else -> println("Nah, why?? The choices are obvious!");
             }
         }
     }
+
+    fun addNum(strAdd: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strAdd} \n${menu.lines}")
+    
+        print("Please enter the first number: ")
+        var num1 = readLine()?.toIntOrNull()?: 0
+        print("Please enter the second number: ")
+        var num2 = readLine()?.toIntOrNull()?: 0
+
+        val sum = num1 + num2
+
+        println("${menu.lines} \n${num1} + ${num2} = ${sum} \n${menu.lines}")
+    }
+
+    fun subNum(strSub: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strSub} \n${menu.lines}")
+    
+        print("Please enter the first number: ")
+        var num1 = readLine()?.toIntOrNull()?: 0
+        print("Please enter the second number: ")
+        var num2 = readLine()?.toIntOrNull()?: 0
+
+        val diff = num1 - num2
+
+        println("${menu.lines} \n${num1} - ${num2} = ${diff} \n${menu.lines}")
+    }
+
+    fun mulNum(strMul: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strMul} \n${menu.lines}")
+    
+        print("Please enter the first number: ")
+        var num1 = readLine()?.toIntOrNull()?: 0
+        print("Please enter the second number: ")
+        var num2 = readLine()?.toIntOrNull()?: 0
+
+        val prod = num1 * num2
+
+        println("${menu.lines} \n${num1} * ${num2} = ${prod} \n${menu.lines}")
+    }
+
+    fun divNum(strDiv: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strDiv} \n${menu.lines}")
+    
+        print("Please enter the first number: ")
+        var num1 = readLine()?.toIntOrNull()?: 0
+        print("Please enter the second number: ")
+        var num2 = readLine()?.toIntOrNull()?: 0
+
+        val quo = num1 / num2
+
+        println("${menu.lines} \n${num1} / ${num2} = ${quo} \n${menu.lines}")
+    }
+
+    fun modNum(strMod: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strMod} \n${menu.lines}")
+    
+        print("Please enter the first number: ")
+        var num1 = readLine()?.toIntOrNull()?: 0
+        print("Please enter the second number: ")
+        var num2 = readLine()?.toIntOrNull()?: 0
+
+        val rem = num1 % num2
+
+        println("${menu.lines} \n${num1} % ${num2} = ${rem} \n${menu.lines}")
+    }
 }
 
 class AdvanceCalulator{
 
     val opFact = "Factorial"
-    val opSqr = "Square"
+    val opSqr = "Exponentation"
     val mainMenu = "Go back to main Menu"
 
     fun displayChoice(menu: Menu){
         var advChoice = 0;
+
+        println("""
+ _________________________
+|  _____________________  |
+| |         Hello World | |
+| |_____________________| |
+|_________________________|
+|                         |
+|   [AC] [ C] [ ^] [ !]   |
+|                         |
+|   [ 7] [ 8] [ 9] |---|  |
+|                  |   |  |
+|   [ 4] [ 5] [ 6] | = |  |
+|                  |   |  |
+|   [ 1] [ 2] [ 3] |   |  |
+|                  |---|  |
+|   [ 0] [00] [ .]        |
+|_________________________|
+        """)
 
         while(advChoice !in 3..4) {
             println("${menu.lines} \nYou chose ${menu.strAdvCalc} \n${menu.lines} \nChoose Operation Below")
@@ -82,13 +185,48 @@ class AdvanceCalulator{
             advChoice = readLine()?.toIntOrNull()?: 0
             
             when (advChoice){
-                1 -> println()
-                2 -> println()
+                1 -> factNum(opFact, menu)
+                2 -> sqrNum(opSqr, menu)
                 3 -> return
                 4 -> {println("Your choice is ${menu.strQuit}"); exitProcess(0)}
                 else -> println("Nah, why?? The choices are obvious!");
             }
         }
+    }
+
+    fun factNum(strFact: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strFact} \n${menu.lines}")
+        var num = -1;
+    
+        while (num < 0){
+            print("Please enter the number: ")
+            num = readLine()?.toIntOrNull()?: -1
+        }
+
+        println("${num}! = " + solve(num) + "\n${menu.lines}")
+    }
+
+    fun solve(num: Int): Long {
+        if (num <= 1) return 1L
+        
+        return num * solve(num - 1)
+    }
+
+    fun sqrNum(strSqr: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strSqr} \n${menu.lines}")
+
+        print("Please enter the number: ")
+        var num = readLine()?.toIntOrNull()?: 0
+        print("Please enter the exponent: ")
+        var exp = readLine()?.toIntOrNull()?: 0
+
+        println("${num}^${exp} = " + calc(num, exp) + "\n${menu.lines}")
+    }
+
+    fun calc(num: Int, exp: Int): Long{
+        if (exp == 0) return 1L
+        
+        return num * calc(num, exp -1)
     }
 }
 
@@ -109,13 +247,55 @@ class DefNotCalc{
             notChoice = readLine()?.toIntOrNull()?: 0
             
             when (notChoice){
-                1 -> println()
-                2 -> println()
+                1 -> dogSays(dogSay, menu)
+                2 -> boolSheet(trueOrFalse, menu)
                 3 -> return
                 4 -> {println("Your choice is ${menu.strQuit}"); exitProcess(0)}
                 else -> println("Nah, why?? The choices are obvious!");
             }
         }
+    }
+
+    fun dogSays(strDog: String, menu: Menu) {
+        println("${menu.lines} \nYou chose ${strDog} \n${menu.lines}")
+        print("Enter a word: ")
+        val word = readLine()?: ""
+
+        println(display(word,menu))
+    }
+
+    fun boolSheet(strBool: String, menu: Menu){
+        println("${menu.lines} \nYou chose ${strBool} \n${menu.lines}")
+        print("Enter a hypothesis: ")
+        val word = readLine()?: ""
+
+        val isTrue = kotlin.random.Random.nextBoolean().toString()
+
+        println(display(isTrue,menu))
+    }
+
+    fun display(word: String, menu: Menu){
+        val textLength = word.length
+        val innerWidth = if (textLength > 11) textLength + 2 else 13
+        val rightPadding = " ".repeat(innerWidth - textLength)
+        val innerBorder = "_".repeat(innerWidth + 2)
+        val outerBorder = "_".repeat(innerWidth + 6)
+
+        println("""
+                $outerBorder
+                |  $innerBorder  |
+                | | $rightPadding$word | |
+                | |$innerBorder| |
+                |$outerBorder|
+                        \
+                        \   / \__
+                            (    @\___
+                            /         O
+                           /    (_____/
+                          /____/    
+                    """)
+                    
+        println("${menu.lines}")
     }
 }
 
