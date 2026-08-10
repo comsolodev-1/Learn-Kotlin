@@ -1,7 +1,5 @@
 interface Speaker {
-    fun speak(
-        println("I come in peace")
-    )
+    fun speak()
 }
 
 data class Person(
@@ -11,6 +9,7 @@ data class Person(
 ) : Speaker {
     
     override fun speak() {
+        println("Hello, World...I'm ${name}")
     }
 }
 
@@ -28,8 +27,8 @@ fun main() {
     println("is the two person the same person: ${person1 == person2}")
     println("is their age the same: ${person1.age == person2.age}")
     println("is their gender the same: ${person1.gender == person2.gender}")
-    println("Person 1 is ${person1.name} while Person 2 is ${person2.name}")
+    println("Person 1 is ${person1.name} while Person 2 is ${person2.name} \n")
 
-    person1.speak() !
+    person1.speak() 
     person2.speak()
 }
