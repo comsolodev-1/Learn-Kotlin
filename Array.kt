@@ -12,4 +12,6 @@ fun main(){
         }
     }
 
+    println("I think its not fizzbuzz")
+
 }
